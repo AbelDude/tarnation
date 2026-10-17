@@ -15,7 +15,7 @@ Uses Godot CharacterBody3D, gravity, BoxShape3D collisions, invisible solid boun
 
 
 
-The player is a simple all-yellow humanoid with a round head, walking limbs, and a jointed right arm that follows the held pole during swings and thrusts.
+The player uses the 2.11-unit Blender woodsman model: flannel shirt, blue jeans, boots, and empty hands. Procedural bone animation drives walking and the existing directional attack motions. Movement, jump, camera, HUD highlights, and cabin spawn remain available.
 The terrain spans 500 x 500 horizontal units, bounded at X/Z = +/-250. The terrain has no grid overlay.
 
 Ancient oak trees generate randomly each run at 5 per 25,000 square units (50 across the 500 x 500 world). Trees follow terrain elevation, vary slightly in scale and rotation, keep 12 units between trunks and clear of the starting point, and have solid trunk collisions. The source GLB is copied into assets/ancient-oak-swaying.glb.
@@ -28,3 +28,5 @@ Oaks are scaled to a nominal 27.43 units tall, about 13 times the visible 2.11-u
 
 The terrain material blends irregular moss-green patches, brown soil, leaf-litter colors, and fine earthy grain; the ground has no grid lines.
 assets/log-cabin.glb is a Blender-built cabin asset with a 7 x 8 unit main footprint, open interior, porch, entry ramp, and a 1.68 wide x 2.81 high doorway. Exported at 1:1 Godot scale. The current character was tested walking in and out using generated mesh collisions. The cabin is placed at the world center on a flat clearing that blends into the valley. The character spawns facing the entrance, 5 units in front of the doorway. Trees are kept outside a 28-unit clearing; the cabin uses mesh collisions with an open doorway.
+assets/woodsman.glb is a separate 2.11-unit woodsman character model with red/black flannel, blue jeans, boots, beard, empty hands, an embedded plaid texture, and a 15-bone armature. Its scale, skeleton, and texture were checked in Godot. It is the active player model, facing forward with its feet aligned to the existing collision body.
+The woodsman includes Woodsman_Goodbye_Wave, a 4-second right-arm raise, open-palm goodbye wave, and return to rest. Animation export was checked in Godot.
