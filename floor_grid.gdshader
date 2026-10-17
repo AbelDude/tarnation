@@ -7,15 +7,6 @@ void vertex() {
 	floor_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xz;
 }
 
-float grid_line(vec2 position, float spacing, float width) {
-	vec2 distance_to_line = abs(mod(position + spacing * 0.5, spacing) - spacing * 0.5);
-	vec2 pixel_width = max(fwidth(position), vec2(0.001));
-	vec2 coverage = vec2(1.0) - smoothstep(vec2(width), vec2(width) + pixel_width, distance_to_line);
-	// Fade lines smaller than a pixel to avoid shimmering near the horizon.
-	coverage *= clamp(vec2(spacing * 0.2) / pixel_width, vec2(0.0), vec2(1.0));
-	return max(coverage.x, coverage.y);
-}
-
 float hash_ground(vec2 point) {
 	return fract(sin(dot(point, vec2(127.1, 311.7))) * 43758.5453);
 }
@@ -35,8 +26,6 @@ float layered_noise(vec2 point) {
 }
 
 void fragment() {
-	float minor = grid_line(floor_position, 10.0, 0.035);
-	float major = grid_line(floor_position, 50.0, 0.09);
 	// Broad irregular patches, medium leaf litter, and small earthy flecks.
 	vec2 warp = vec2(ground_noise(floor_position * 0.04), ground_noise(floor_position * 0.04 + vec2(51.0))) * 5.0;
 	float patches = layered_noise((floor_position + warp) * 0.065);
@@ -49,7 +38,6 @@ void fragment() {
 	float leaves = smoothstep(0.62, 0.79, layered_noise(floor_position * 2.5));
 	floor_color = mix(floor_color, vec3(0.22, 0.13, 0.045), leaves * 0.3 * detail_visibility);
 	floor_color *= mix(1.0, mix(0.8, 1.16, grain), detail_visibility);
-	ALBEDO = mix(floor_color, vec3(0.022, 0.032, 0.014), minor * 0.62);
-	ALBEDO = mix(ALBEDO, vec3(0.012, 0.019, 0.008), major * 0.85);
+	ALBEDO = floor_color;
 	ROUGHNESS = mix(0.88, 1.0, litter);
 }

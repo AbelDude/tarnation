@@ -16,7 +16,7 @@ Uses Godot CharacterBody3D, gravity, BoxShape3D collisions, invisible solid boun
 
 
 The player is a simple all-yellow humanoid with a round head, walking limbs, and a jointed right arm that follows the held pole during swings and thrusts.
-The terrain spans 500 x 500 horizontal units, bounded at X/Z = +/-250. Floor grid squares are 10 x 10 units, with bold lines every 50 units.
+The terrain spans 500 x 500 horizontal units, bounded at X/Z = +/-250. The terrain has no grid overlay.
 
 Ancient oak trees generate randomly each run at 5 per 25,000 square units (50 across the 500 x 500 world). Trees follow terrain elevation, vary slightly in scale and rotation, keep 12 units between trunks and clear of the starting point, and have solid trunk collisions. The source GLB is copied into assets/ancient-oak-swaying.glb.
 
@@ -26,4 +26,4 @@ Procedural pines form 25 random clusters (one per 10,000 square units), with a r
 Oaks are scaled to a nominal 27.43 units tall, about 13 times the visible 2.11-unit person, retaining +/-15% random size variation. Trunk collisions scale with the tree. Pine height follows the nominal oak world height at a 1.5 ratio.
 
 
-The terrain material blends irregular moss-green patches, brown soil, leaf-litter colors, and fine earthy grain; distance grid lines remain visible.
+The terrain material blends irregular moss-green patches, brown soil, leaf-litter colors, and fine earthy grain; the ground has no grid lines.

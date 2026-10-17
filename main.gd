@@ -45,7 +45,7 @@ func _ready() -> void:
 	var overlay := CanvasLayer.new()
 	add_child(overlay)
 	var instructions := Label.new()
-	instructions.text = "WASD Move | CLICK Thrust | HOLD + DRAG Slash | MOUSE Look | SPACE Jump | ESC Release\nGrid: 10 units per square | Bold lines: 50 units | Floor: 500 x 500"
+	instructions.text = "WASD Move | CLICK Thrust | HOLD + DRAG Slash | MOUSE Look | SPACE Jump | ESC Release"
 	instructions.position = Vector2(24, 20)
 	instructions.add_theme_font_size_override("font_size", 17)
 	instructions.add_theme_color_override("font_shadow_color", Color.BLACK)
