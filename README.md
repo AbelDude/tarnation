@@ -10,9 +10,11 @@ Open project.godot in Godot 4 and press F5. Stop any running game first to load 
 - Hold left-click and drag: the pole swings in the swipe direction (right uses the left-arrow swing, left uses right, up uses down, and down uses up). The cross highlights the swing's starting side. Each press triggers one attack. Attacks finish before another can start.
 - Escape: release the mouse. Click in the game to capture it again.
 
-Uses Godot CharacterBody3D, gravity, BoxShape3D collisions, invisible solid boundaries, and a SpringArm3D camera that retracts near obstacles. The green arena has a flat floor enclosed by invisible boundaries.
+Uses Godot CharacterBody3D, gravity, BoxShape3D collisions, invisible solid boundaries, and a SpringArm3D camera that retracts near obstacles. The green arena is a rolling valley enclosed by invisible boundaries. The player starts at its low center, with gentle slopes and rounded humps rising toward the edges.
 
 
 
 
 The player is a simple all-yellow humanoid with a round head, walking limbs, and a jointed right arm that follows the held pole during swings and thrusts.
+The terrain spans 500 x 500 horizontal units, bounded at X/Z = +/-250. Floor grid squares are 10 x 10 units, with bold lines every 50 units.
+

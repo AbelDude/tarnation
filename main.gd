@@ -4,11 +4,14 @@ const PLAYER_SCRIPT := preload("res://player.gd")
 
 
 func _ready() -> void:
-	add_box("Floor", Vector3(0, -0.25, 0), Vector3(24, 0.5, 18), Color("398b40"))
-	add_box("NorthWall", Vector3(0, 2, -9), Vector3(24.5, 4, 0.5), Color("254d30"), false)
-	add_box("SouthWall", Vector3(0, 2, 9), Vector3(24.5, 4, 0.5), Color("254d30"), false)
-	add_box("WestWall", Vector3(-12, 2, 0), Vector3(0.5, 4, 18), Color("254d30"), false)
-	add_box("EastWall", Vector3(12, 2, 0), Vector3(0.5, 4, 18), Color("254d30"), false)
+	var terrain := StaticBody3D.new()
+	terrain.name = "Floor"
+	terrain.set_script(preload("res://terrain.gd"))
+	add_child(terrain)
+	add_box("NorthWall", Vector3(0, 40, -250), Vector3(500.5, 100, 0.5), Color("254d30"), false)
+	add_box("SouthWall", Vector3(0, 40, 250), Vector3(500.5, 100, 0.5), Color("254d30"), false)
+	add_box("WestWall", Vector3(-250, 40, 0), Vector3(0.5, 100, 500), Color("254d30"), false)
+	add_box("EastWall", Vector3(250, 40, 0), Vector3(0.5, 100, 500), Color("254d30"), false)
 
 
 	var light := DirectionalLight3D.new()
@@ -34,7 +37,7 @@ func _ready() -> void:
 	var overlay := CanvasLayer.new()
 	add_child(overlay)
 	var instructions := Label.new()
-	instructions.text = "WASD Move | CLICK Thrust | HOLD + DRAG Slash | MOUSE Look | SPACE Jump | ESC Release"
+	instructions.text = "WASD Move | CLICK Thrust | HOLD + DRAG Slash | MOUSE Look | SPACE Jump | ESC Release\nGrid: 10 units per square | Bold lines: 50 units | Floor: 500 x 500"
 	instructions.position = Vector2(24, 20)
 	instructions.add_theme_font_size_override("font_size", 17)
 	instructions.add_theme_color_override("font_shadow_color", Color.BLACK)
@@ -69,6 +72,10 @@ func add_box(box_name: String, center: Vector3, size: Vector3, color: Color, vis
 	material.albedo_color = color
 	material.roughness = 0.9
 	visual.material_override = material
+	if box_name == "Floor":
+		var grid_material := ShaderMaterial.new()
+		grid_material.shader = preload("res://floor_grid.gdshader")
+		visual.material_override = grid_material
 	body.add_child(visual)
 	add_child(body)
 

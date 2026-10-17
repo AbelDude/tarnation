@@ -29,6 +29,8 @@ var attack_pressed_at := 0
 
 
 func _ready() -> void:
+	floor_snap_length = 0.6
+	floor_constant_speed = true
 	var collision := CollisionShape3D.new()
 	var shape := BoxShape3D.new()
 	shape.size = Vector3(0.85, 2.2, 0.65)
