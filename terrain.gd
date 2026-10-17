@@ -3,6 +3,7 @@ extends StaticBody3D
 const SIZE := 500.0
 const STEP := 2.0
 const POINTS := 251
+const LAYOUT := preload("res://world_layout.gd")
 
 
 static func height_at(x: float, z: float) -> float:
@@ -10,7 +11,10 @@ static func height_at(x: float, z: float) -> float:
 	var valley := 18.0 * pow(radius / 250.0, 1.6)
 	var humps := 3.0 * (1.0 - cos(x / 24.0) * cos(z / 31.0))
 	humps += 1.5 * (1.0 - cos((x + z) / 39.0))
-	return valley + humps
+	# Level the cabin, porch, approach, and spawn, blending gently outside.
+	var distance_from_pad := maxf(absf(x) - LAYOUT.FLAT_HALF_SIZE.x, absf(z) - LAYOUT.FLAT_HALF_SIZE.y)
+	var blend := smoothstep(0.0, 12.0, distance_from_pad)
+	return (valley + humps) * blend
 
 
 func _ready() -> void:

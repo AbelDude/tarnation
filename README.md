@@ -27,3 +27,4 @@ Oaks are scaled to a nominal 27.43 units tall, about 13 times the visible 2.11-u
 
 
 The terrain material blends irregular moss-green patches, brown soil, leaf-litter colors, and fine earthy grain; the ground has no grid lines.
+assets/log-cabin.glb is a Blender-built cabin asset with a 7 x 8 unit main footprint, open interior, porch, entry ramp, and a 1.68 wide x 2.81 high doorway. Exported at 1:1 Godot scale. The current character was tested walking in and out using generated mesh collisions. The cabin is placed at the world center on a flat clearing that blends into the valley. The character spawns facing the entrance, 5 units in front of the doorway. Trees are kept outside a 28-unit clearing; the cabin uses mesh collisions with an open doorway.

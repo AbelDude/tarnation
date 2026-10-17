@@ -1,6 +1,7 @@
 extends Node3D
 
 const PLAYER_SCRIPT := preload("res://player.gd")
+const LAYOUT := preload("res://world_layout.gd")
 
 
 func _ready() -> void:
@@ -8,6 +9,11 @@ func _ready() -> void:
 	terrain.name = "Floor"
 	terrain.set_script(preload("res://terrain.gd"))
 	add_child(terrain)
+	var cabin := Node3D.new()
+	cabin.name = "Cabin"
+	cabin.set_script(preload("res://cabin.gd"))
+	cabin.position = LAYOUT.CABIN_POSITION
+	add_child(cabin)
 	var forest := Node3D.new()
 	forest.name = "Forest"
 	forest.set_script(preload("res://forest.gd"))
@@ -39,7 +45,8 @@ func _ready() -> void:
 	var player := CharacterBody3D.new()
 	player.name = "Player"
 	player.set_script(PLAYER_SCRIPT)
-	player.position = Vector3(0, 0.5, 0)
+	player.position = LAYOUT.PLAYER_SPAWN
+	player.set("spawn_position", LAYOUT.PLAYER_SPAWN)
 	add_child(player)
 
 	var overlay := CanvasLayer.new()

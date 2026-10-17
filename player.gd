@@ -4,6 +4,7 @@ signal swing_changed(direction: String)
 
 @export var speed: float = 6.0
 @export var jump_speed: float = 8.0
+@export var spawn_position := Vector3(0, 0.55, 9.035)
 var visual: Node3D
 var camera_pivot: Node3D
 var jump_requested := false
@@ -219,7 +220,7 @@ func _physics_process(delta: float) -> void:
 	jump_requested = false
 	move_and_slide()
 	if global_position.y < -15.0:
-		global_position = Vector3(0, 1, 0)
+		global_position = spawn_position
 		velocity = Vector3.ZERO
 
 

@@ -45,6 +45,8 @@ func _ready() -> void:
 		if offsets.size() != tree_count:
 			continue
 		for offset in offsets:
+			if (center + offset).length() < preload("res://world_layout.gd").CLEARING_RADIUS:
+				clear = false
 			for oak_position in oak_positions:
 				if (center + offset).distance_to(Vector2(oak_position.x, oak_position.z)) < 3.5:
 					clear = false
