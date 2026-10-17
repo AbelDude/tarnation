@@ -18,3 +18,6 @@ Uses Godot CharacterBody3D, gravity, BoxShape3D collisions, invisible solid boun
 The player is a simple all-yellow humanoid with a round head, walking limbs, and a jointed right arm that follows the held pole during swings and thrusts.
 The terrain spans 500 x 500 horizontal units, bounded at X/Z = +/-250. Floor grid squares are 10 x 10 units, with bold lines every 50 units.
 
+Ancient oak trees generate randomly each run at 5 per 25,000 square units (50 across the 500 x 500 world). Trees follow terrain elevation, vary slightly in scale and rotation, keep 12 units between trunks and clear of the starting point, and have solid trunk collisions. The source GLB is copied into assets/ancient-oak-swaying.glb.
+
+Trees retain the Gentle_Oak_Breeze animation, looping with randomized playback speed and phase for natural sway.
