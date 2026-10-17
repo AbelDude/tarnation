@@ -12,6 +12,10 @@ func _ready() -> void:
 	forest.name = "Forest"
 	forest.set_script(preload("res://forest.gd"))
 	add_child(forest)
+	var pines := Node3D.new()
+	pines.name = "PineForest"
+	pines.set_script(preload("res://pine_forest.gd"))
+	add_child(pines)
 	add_box("NorthWall", Vector3(0, 40, -250), Vector3(500.5, 100, 0.5), Color("254d30"), false)
 	add_box("SouthWall", Vector3(0, 40, 250), Vector3(500.5, 100, 0.5), Color("254d30"), false)
 	add_box("WestWall", Vector3(-250, 40, 0), Vector3(0.5, 100, 500), Color("254d30"), false)

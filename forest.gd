@@ -6,6 +6,10 @@ const TREES_PER_AREA := 5.0 / 25000.0
 const WORLD_SIZE := 500.0
 const MIN_SPACING := 12.0
 const START_CLEARANCE := 12.0
+const PERSON_HEIGHT := 2.11
+const OAK_TO_PERSON_RATIO := 13.0
+const MODEL_HEIGHT := 8.427527
+const OAK_SCALE := PERSON_HEIGHT * OAK_TO_PERSON_RATIO / MODEL_HEIGHT
 
 var tree_positions: Array[Vector3] = []
 
@@ -30,7 +34,7 @@ func _ready() -> void:
 			continue
 		var position_on_ground := Vector3(point.x, TERRAIN.height_at(point.x, point.y) - 0.15, point.y)
 		tree_positions.append(position_on_ground)
-		var size := rng.randf_range(0.85, 1.15)
+		var size := OAK_SCALE * rng.randf_range(0.85, 1.15)
 		# Keep the imported scene intact so its animated blend shapes still sway.
 		var tree := scene.instantiate() as Node3D
 		tree.name = "Oak_%03d" % tree_positions.size()

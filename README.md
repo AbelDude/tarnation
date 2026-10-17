@@ -21,3 +21,9 @@ The terrain spans 500 x 500 horizontal units, bounded at X/Z = +/-250. Floor gri
 Ancient oak trees generate randomly each run at 5 per 25,000 square units (50 across the 500 x 500 world). Trees follow terrain elevation, vary slightly in scale and rotation, keep 12 units between trunks and clear of the starting point, and have solid trunk collisions. The source GLB is copied into assets/ancient-oak-swaying.glb.
 
 Trees retain the Gentle_Oak_Breeze animation, looping with randomized playback speed and phase for natural sway.
+Procedural pines form 25 random clusters (one per 10,000 square units), with a random 3-12 trees per cluster and nearest neighbors approximately 4.5-5.4 units apart. Each pine is 50% taller than the nominal scaled oak in the world (about 41.15 units), with trunks and crowns enlarged proportionally. Eight generated crown variants use layered irregular evergreen branches and tapered trunks. Pines follow the terrain, have trunk collisions, avoid oak trunks, and keep the starting area clear.
+
+Oaks are scaled to a nominal 27.43 units tall, about 13 times the visible 2.11-unit person, retaining +/-15% random size variation. Trunk collisions scale with the tree. Pine height follows the nominal oak world height at a 1.5 ratio.
+
+
+The terrain material blends irregular moss-green patches, brown soil, leaf-litter colors, and fine earthy grain; distance grid lines remain visible.
